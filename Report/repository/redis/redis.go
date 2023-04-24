@@ -38,6 +38,6 @@ func (r *reportRedis) Set(ctx context.Context, value interface{}, key string, tt
 		log.Printf("redis set error")
 	}
 
-	return nil
+	return err
 
 }
