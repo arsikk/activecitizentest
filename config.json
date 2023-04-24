@@ -1,0 +1,19 @@
+{
+    "postgres" :
+    {
+        "DB_USER": "postgres",
+        "DB_PASSWORD": "admin",
+        "DB_NAME": "mydb",
+        "DB_HOST": "localhost",
+        "DB_PORT": "5432"
+    },
+    "redis" :
+    {
+        "ADDR": "localhost:6379",
+        "PASSWORD": "",
+        "DB": 0
+
+    }
+
+
+}
