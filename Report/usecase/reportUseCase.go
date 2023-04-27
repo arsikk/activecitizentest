@@ -17,6 +17,7 @@ type ReportRepo interface {
 type ReportRedis interface {
 	Get(ctx context.Context, key string) (interface{}, error)
 	Set(ctx context.Context, value interface{}, key string, ttl time.Duration) error
+	Del(ctx context.Context, key string) error
 }
 
 type reportUseCase struct {

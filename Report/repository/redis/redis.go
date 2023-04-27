@@ -41,3 +41,9 @@ func (r *reportRedis) Set(ctx context.Context, value interface{}, key string, tt
 	return err
 
 }
+
+func (r *reportRedis) Del(ctx context.Context, key string) error {
+	err := r.Redis.Del(ctx, key).Err()
+
+	return err
+}

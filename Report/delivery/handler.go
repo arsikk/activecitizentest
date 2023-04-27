@@ -100,16 +100,26 @@ func (h *handler) GetByID(c *gin.Context) {
 
 func (h *handler) DeleteReport(c *gin.Context) {
 	inp := model.Report{}
+	ctx := context.Background()
 
 	if err := c.BindJSON(&inp); err != nil {
 		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
 
-	err := h.useCasePostgres.DeleteReport(inp.ReportID)
+	err := h.useCaseRedis.Del(ctx, strconv.Itoa(inp.ReportID))
+
+	if err != nil {
+		log.Printf("redis deleting error")
+		c.AbortWithStatus(http.StatusBadRequest)
+		return
+	}
+
+	err = h.useCasePostgres.DeleteReport(inp.ReportID)
 
 	if err != nil {
 		c.AbortWithStatus(http.StatusBadRequest)
+		return
 	}
 
 	c.JSON(http.StatusOK, "deleted succesfully")

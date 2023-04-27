@@ -2,7 +2,7 @@
 
 import (
 	"REST/Report/delivery"
-	repository "REST/Report/repository/postgress"
+	repository "REST/Report/repository/postgres"
 	redis2 "REST/Report/repository/redis"
 	config2 "REST/config"
 	"fmt"
